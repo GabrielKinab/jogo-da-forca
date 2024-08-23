@@ -19,21 +19,82 @@ frases_e_dicas = [
     ("API", "Interface que permite a comunicação entre diferentes sistemas.")
 ]
 
+# Boneco da forca para cada erro que der
+boneco_forca = [
+    """
+    ____
+    |  |
+    |  
+    | 
+    | 
+    | 
+    """,
+    """
+    ____
+    |  |
+    |  O
+    | 
+    | 
+    | 
+    """,
+    """
+    ____
+    |  |
+    |  O
+    |  |
+    | 
+    | 
+    """,
+    """
+    ____
+    |  |
+    |  O
+    | /|
+    | 
+    | 
+    """,
+    """
+    ____
+    |  |
+    |  O
+    | /|\\
+    | 
+    | 
+    """,
+    """
+    ____
+    |  |
+    |  O
+    | /|\\
+    | / 
+    | 
+    """,
+    """
+    ____
+    |  |
+    |  O
+    | /|\\
+    | / \\
+    | 
+    """
+]
+
 # Escolher aleatoriamente uma frase e sua dica
 frase, dica = random.choice(frases_e_dicas)
-frase = frase.upper()  # Garantir que a frase esteja em letras maiúsculas
+frase = frase.upper()  # É para ter certeza que a frase esteja em maiúsculo
 
-# Estado inicial do jogo
+# Começo do jogo
 chances = 6
-letras_acertadas = ["_" for _ in frase]  # Lista que guarda as letras acertadas ou _ para letras não adivinhadas
+letras_acertadas = ["_" for _ in frase]  # Lista que guarda as letras certas e erradas
 letras_erradas = []
 
 # Início do jogo
 print("Bem-vindo ao jogo da Forca!")
 print("Dica:", dica)
+print(boneco_forca[0])  # Exibe a forca inicial
 print("Palavra:", " ".join(letras_acertadas))
 
-# Loop principal do jogo
+# Loop do jogo
 while chances > 0 and "_" in letras_acertadas:
     letra = input("Digite uma letra: ").upper()
     
@@ -54,7 +115,8 @@ while chances > 0 and "_" in letras_acertadas:
         print("Letra errada!")
         chances -= 1
         letras_erradas.append(letra)
-
+    
+    print(boneco_forca[6 - chances])  # Exibe o estágio atual da forca
     print("Palavra:", " ".join(letras_acertadas))
     print(f"Chances restantes: {chances}")
     print(f"Letras erradas: {', '.join(letras_erradas)}")
